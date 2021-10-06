@@ -16,58 +16,49 @@ public class Head : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "BodyPart")
-        {
-            gm.endGame();
-        }
-        if(other.gameObject.tag == "Wall")
+        if(other.gameObject.tag == "BodyPart" || other.gameObject.tag == "Wall" || other.gameObject.tag == "Rock")
         {
             gm.endGame();
         }
         if(other.gameObject.tag == "GenericFood")
         {
-            gm.points++;
-            gm.addSize();
-            gm.addSpeed();
-            gm.normalPoints();
+            gm.genericFood();
             Destroy(other);
         }
         if(other.gameObject.tag == "SpeedBuff")
         {
-            gm.points++;
-            gm.addSize();
-            gm.addSpeed();
-            gm.normalPoints();
-            gm.removeSpeedBuff();
+            gm.speedBuff();
             Destroy(other);
         }
         if(other.gameObject.tag == "SizeBuff")
         {
-            gm.points++;
-            gm.addSize();
-            gm.addSpeed();
-            gm.normalPoints();
-            gm.removeSizeBuff();
+            gm.sizedBuff();
             Destroy(other);
         }
         if(other.gameObject.tag == "SpeedDebuff")
         {
-            gm.points++;
-            gm.addSize();
-            gm.addSpeed();
-            gm.normalPoints();
-            gm.addSpeedDebuff();
+            gm.speedDebuff();
             Destroy(other);
         }
         if(other.gameObject.tag == "SizeDebuff")
         {
-            gm.points++;
-            gm.addSize();
-            gm.addSpeed();
-            gm.normalPoints();
-            gm.addSizeDebuff();
+            gm.sizeDebuff();
             Destroy(other);
         }
-        
+        if(other.gameObject.tag == "WallDebuff")
+        {
+            gm.wallsDebuff();
+            Destroy(other);
+        }
+        if(other.gameObject.tag == "BodyBuff")
+        {
+            gm.bodyBuff();
+            Destroy(other);
+        }
+        if(other.gameObject.tag == "RockDebuff")
+        {
+            gm.rockDebuff();
+            Destroy(other);
+        }
     }
 }

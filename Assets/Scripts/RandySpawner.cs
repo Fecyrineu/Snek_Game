@@ -14,6 +14,7 @@ public class RandySpawner : MonoBehaviour
     [SerializeField] private int minimunYRange;
     [SerializeField] private int maximumYRange;
     private int x, y;
+    private float x2, y2;
 
     void Start()
     {
@@ -41,6 +42,8 @@ public class RandySpawner : MonoBehaviour
     {
         x = Random.Range(minimunXRange, maximumXRange + 1);
         y = Random.Range(minimunYRange, maximumYRange + 1);
-        gameObject.transform.position = new Vector3(x, y, 0);
+        x2 = x * gridSize;
+        y2 = x * gridSize;
+        gameObject.transform.position = new Vector3(x2 + XOffset, y2 + YOffset, 0);
     }
 }

@@ -13,6 +13,11 @@ TagManager:
   - SizeBuff
   - SpeedDebuff
   - SizeDebuff
+  - WallDebuff
+  - BodyBuff
+  - Rock
+  - RockDebuff
+  - RockBuff
   layers:
   - Default
   - TransparentFX

@@ -24,6 +24,10 @@ public class GameMaster : MonoBehaviour
     public int sizeIncreaseUponDebuff;
     public int sizeDecreaseUponBuff;
 
+    public int bodyBuffDuration;
+    private bool bodyBuffActive = false;
+    private int bodyBuffActiveFor;
+
 
     public GameObject snakeHead;
     public GameObject randomSpawnFood;
@@ -39,6 +43,8 @@ public class GameMaster : MonoBehaviour
     public GameObject bodyPartDownLeft;
     public GameObject bodyPartLeftUp;
 
+    public GameObject rock;
+
     public bool movingUp = true;
     public bool movingRight = false;
     public bool movingDown = false;
@@ -46,6 +52,8 @@ public class GameMaster : MonoBehaviour
     private bool hasMovedThisCycle = false;
     private bool hasMovedRight = false;
     private bool hasMovedLeft = false;
+
+    private GameObject[] allBodyParts;
 
     public UnityEvent wallExpansion;
     public UnityEvent onGameEnd;
@@ -65,6 +73,14 @@ public class GameMaster : MonoBehaviour
             hasMovedThisCycle = false;
             hasMovedRight = false;
             hasMovedLeft = false;
+            if(bodyBuffActive == true)
+            {
+                bodyBuffActiveFor++;
+                if(bodyBuffActiveFor >= bodyBuffDuration)
+                {
+                    bodyBuffActive = false;
+                }
+            }
         }
     }
 
@@ -72,11 +88,10 @@ public class GameMaster : MonoBehaviour
     {
         if(hasMovedThisCycle == false)
         {
-            if(movingUp == true){movingUp = false; movingRight = true;}
-            if(movingRight == true){movingRight = false; movingDown = true;}
-            if(movingDown == true){movingDown = false; movingLeft = true;}
-            if(movingLeft == true){movingLeft = false; movingUp = true;}
-            hasMovedThisCycle = true;
+            if(movingUp == true && hasMovedThisCycle == false){movingUp = false; movingRight = true; hasMovedThisCycle = true;}
+            if(movingRight == true && hasMovedThisCycle == false){movingRight = false; movingDown = true; hasMovedThisCycle = true;}
+            if(movingDown == true && hasMovedThisCycle == false){movingDown = false; movingLeft = true; hasMovedThisCycle = true;}
+            if(movingLeft == true && hasMovedThisCycle == false){movingLeft = false; movingUp = true; hasMovedThisCycle = true;}
             hasMovedRight = true;
         }
     }
@@ -84,47 +99,48 @@ public class GameMaster : MonoBehaviour
     {
         if(hasMovedThisCycle == false)
         {
-            if(movingUp == true){movingUp = false; movingLeft = true;}
-            if(movingRight == true){movingRight = false; movingUp = true;}
-            if(movingDown == true){movingDown = false; movingRight = true;}
-            if(movingLeft == true){movingLeft = false; movingDown = true;}
-            hasMovedThisCycle = true;
+            if(movingUp == true && hasMovedThisCycle == false){movingUp = false; movingLeft = true; hasMovedThisCycle = true;}
+            if(movingRight == true && hasMovedThisCycle == false){movingRight = false; movingUp = true; hasMovedThisCycle = true;}
+            if(movingDown == true && hasMovedThisCycle == false){movingDown = false; movingRight = true; hasMovedThisCycle = true;}
+            if(movingLeft == true && hasMovedThisCycle == false){movingLeft = false; movingDown = true; hasMovedThisCycle = true;}
             hasMovedLeft = true;
         }
     }
     public void moveAhead()
     {
-        if(hasMovedLeft == false && hasMovedRight == false)
+        if(bodyBuffActive == false)
         {
-            if(movingUp == true || movingDown == true)
+            if(hasMovedLeft == false && hasMovedRight == false)
             {
-                Instantiate(bodyPartVertical, snakeHead.transform.position, Quaternion.identity);
+                if(movingUp == true || movingDown == true)
+                {
+                    Instantiate(bodyPartVertical, snakeHead.transform.position, Quaternion.identity);
+                }
+                if(movingRight == true || movingLeft == true)
+                {
+                    Instantiate(bodyPartHorizontal, snakeHead.transform.position, Quaternion.identity);
+                }
             }
-            if(movingRight == true || movingLeft == true)
+            else
             {
-                Instantiate(bodyPartHorizontal, snakeHead.transform.position, Quaternion.identity);
+                if(movingUp == true && hasMovedLeft == true || movingRight == true && hasMovedRight == true)
+                {
+                    Instantiate(bodyPartUpRight, snakeHead.transform.position, Quaternion.identity);
+                }
+                if(movingRight == true && hasMovedLeft == true || movingDown == true && hasMovedRight == true)
+                {
+                    Instantiate(bodyPartRightDown, snakeHead.transform.position, Quaternion.identity);
+                }
+                if(movingDown == true && hasMovedLeft == true || movingLeft == true && hasMovedRight == true)
+                {
+                    Instantiate(bodyPartDownLeft, snakeHead.transform.position, Quaternion.identity);
+                }
+                if(movingLeft == true && hasMovedLeft == true || movingUp == true && hasMovedRight == true)
+                {
+                    Instantiate(bodyPartLeftUp, snakeHead.transform.position, Quaternion.identity);
+                }
             }
         }
-        else
-        {
-            if(movingUp == true && hasMovedLeft == true || movingRight == true && hasMovedRight == true)
-            {
-                Instantiate(bodyPartUpRight, snakeHead.transform.position, Quaternion.identity);
-            }
-            if(movingRight == true && hasMovedLeft == true || movingDown == true && hasMovedRight == true)
-            {
-                Instantiate(bodyPartRightDown, snakeHead.transform.position, Quaternion.identity);
-            }
-            if(movingDown == true && hasMovedLeft == true || movingLeft == true && hasMovedRight == true)
-            {
-                Instantiate(bodyPartDownLeft, snakeHead.transform.position, Quaternion.identity);
-            }
-            if(movingLeft == true && hasMovedLeft == true || movingUp == true && hasMovedRight == true)
-            {
-                Instantiate(bodyPartLeftUp, snakeHead.transform.position, Quaternion.identity);
-            }
-        }
-
         if(movingUp == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(0, gridSize, 0);}
         if(movingRight == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(gridSize, 0, 0);}
         if(movingDown == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(0, -gridSize, 0);}
@@ -133,44 +149,69 @@ public class GameMaster : MonoBehaviour
     public void endGame()
     {
         onGameEnd.Invoke();
+        allBodyParts = GameObject.FindGameObjectsWithTag("BodyPart");
+        foreach(GameObject bodyPart in allBodyParts)
+        {
+            bodyPart.GetComponent<BodyPart>().enabled = false;
+        }
     }
-    public void addSize()
-    {
-        snakeSize = snakeSize + speedIncreaseUponEating;
-    }
-    public void addSizeDebuff()
-    {
-        snakeSize = snakeSize + sizeIncreaseUponDebuff;
-    }
-    public void removeSizeBuff()
-    {
-        snakeSize = snakeSize - sizeDecreaseUponBuff;
-    }
-    public void addSpeed()
-    {
-        cycleSpeed = cycleSpeed + speedIncreaseUponEating;
-    }
-    public void addSpeedDebuff()
-    {
-        cycleSpeed = cycleSpeed + speedIncreaseUponDebuff;
-    }
-    public void removeSpeedBuff()
-    {
-        cycleSpeed = cycleSpeed - speedDecreaseUponBuff;
-    }
-    public void normalPoints()
+    public void genericFood()
     {
         points = points + pointsForNormalFood;
-        _pointsUI.text = "Points: " + points;
+        snakeSize = snakeSize + sizeIncreaseUponEating;
+        cycleSpeed = cycleSpeed + speedIncreaseUponEating;
     }
-    public void buffPoints()
+    public void speedBuff()
     {
         points = points + pointsForBuff;
-        _pointsUI.text = "Points: " + points;
+        snakeSize = snakeSize + sizeIncreaseUponEating;
+        cycleSpeed = cycleSpeed + speedDecreaseUponBuff;
     }
-    public void debuffPoints()
+    public void speedDebuff()
     {
         points = points + pointsForDebuff;
-        _pointsUI.text = "Points: " + points;
+        snakeSize = snakeSize + sizeIncreaseUponEating;
+        cycleSpeed = cycleSpeed + speedIncreaseUponDebuff;
+    }
+    public void sizedBuff()
+    {
+        points = points + pointsForBuff;
+        cycleSpeed = cycleSpeed + speedIncreaseUponEating;
+        snakeSize = snakeSize + sizeDecreaseUponBuff;
+    }
+    public void sizeDebuff()
+    {
+        points = points + pointsForDebuff;
+        cycleSpeed = cycleSpeed + speedIncreaseUponEating;
+        snakeSize = snakeSize + sizeIncreaseUponDebuff;
+    }
+    public void wallsDebuff()
+    {
+        points = points + pointsForDebuff;
+        cycleSpeed = cycleSpeed + speedIncreaseUponEating;
+        snakeSize = snakeSize + sizeIncreaseUponEating;
+        wallExpansion.Invoke();
+    }
+    public void bodyBuff()
+    {
+        points = points + pointsForBuff;
+        snakeSize = snakeSize + sizeIncreaseUponEating;
+        cycleSpeed = cycleSpeed + speedIncreaseUponEating;
+
+        allBodyParts = GameObject.FindGameObjectsWithTag("BodyPart");
+        foreach(GameObject bodyPart in allBodyParts)
+        {
+            Destroy(bodyPart);
+        }
+        bodyBuffActive = true;
+        bodyBuffActiveFor = 0;
+    }
+    public void rockDebuff()
+    {
+        points = points + pointsForDebuff;
+        cycleSpeed = cycleSpeed + speedIncreaseUponEating;
+        snakeSize = snakeSize + sizeIncreaseUponEating;
+
+        Instantiate(rock, randomSpawnDebuff.transform.position, Quaternion.identity);
     }
 }
