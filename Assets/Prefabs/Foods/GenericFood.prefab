@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8553475664344585533}
   - component: {fileID: 942603957526128572}
   - component: {fileID: 8231557140072899100}
+  - component: {fileID: 1293401892060606488}
   m_Layer: 0
   m_Name: GenericFood
   m_TagString: GenericFood
@@ -99,3 +100,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1293401892060606488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039903462861491950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd5405ecb770cd4688024120f60ca72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodDurationInCycles: 50

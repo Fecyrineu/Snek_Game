@@ -9,10 +9,10 @@ public class RandySpawner : MonoBehaviour
     public float XOffset;
     public float YOffset;
 
-    [SerializeField] private int minimunXRange;
-    [SerializeField] private int maximumXRange;
-    [SerializeField] private int minimunYRange;
-    [SerializeField] private int maximumYRange;
+    public int minimunXRange;
+    public int maximumXRange;
+    public int minimunYRange;
+    public int maximumYRange;
     private int x, y;
     private float x2, y2;
 

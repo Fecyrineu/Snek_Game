@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8670284053886625879}
   - component: {fileID: 284792111514557142}
   - component: {fileID: 8996881711294865270}
+  - component: {fileID: 2071170924594261978}
   m_Layer: 0
   m_Name: SpeedBuff
   m_TagString: SpeedBuff
@@ -99,3 +100,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2071170924594261978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344382491135488900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd5405ecb770cd4688024120f60ca72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodDurationInCycles: 50

@@ -23,42 +23,42 @@ public class Head : MonoBehaviour
         if(other.gameObject.tag == "GenericFood")
         {
             gm.genericFood();
-            Destroy(other);
+            Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "SpeedBuff")
         {
             gm.speedBuff();
-            Destroy(other);
+            Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "SizeBuff")
         {
             gm.sizedBuff();
-            Destroy(other);
+            Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "SpeedDebuff")
         {
             gm.speedDebuff();
-            Destroy(other);
+            Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "SizeDebuff")
         {
             gm.sizeDebuff();
-            Destroy(other);
+            Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "WallDebuff")
         {
             gm.wallsDebuff();
-            Destroy(other);
+            Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "BodyBuff")
         {
             gm.bodyBuff();
-            Destroy(other);
+            Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "RockDebuff")
         {
             gm.rockDebuff();
-            Destroy(other);
+            Destroy(other.gameObject);
         }
     }
 }

@@ -1495,7 +1495,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &311359798
 GameObject:
@@ -3517,7 +3517,7 @@ RectTransform:
   - {fileID: 1626226630}
   - {fileID: 920194101}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3694,106 +3694,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &733424893
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 733424897}
-  - component: {fileID: 733424896}
-  - component: {fileID: 733424895}
-  - component: {fileID: 733424894}
-  m_Layer: 0
-  m_Name: SecretSpawnerDebuff
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &733424894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733424893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d23691f80a9cff48aeeca1b102b735c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snakeHead: {fileID: 1355558444}
-  gridSize: 0.5
-  XOffset: -0.25
-  YOffset: -0.25
-  minimunXRange: -3
-  maximumXRange: 2
-  minimunYRange: -7
-  maximumYRange: 8
---- !u!61 &733424895
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733424893}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
-  m_EdgeRadius: 0
---- !u!50 &733424896
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733424893}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 1
-  m_Constraints: 7
---- !u!4 &733424897
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733424893}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -0.25, z: -0.8954399}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &770744308
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,9 +4822,7 @@ MonoBehaviour:
   sizeDecreaseUponBuff: 3
   bodyBuffDuration: 20
   snakeHead: {fileID: 1355558444}
-  randomSpawnFood: {fileID: 1653277550}
-  randomSpawnBuff: {fileID: 1334178632}
-  randomSpawnDebuff: {fileID: 733424893}
+  randomSpawn: {fileID: 1653277550}
   pointsUI: {fileID: 1418679119}
   bodyPartHorizontal: {fileID: 7161307646700323205, guid: ab67c062891fc7d4186d3cba57893b40, type: 3}
   bodyPartVertical: {fileID: 4224454026568706611, guid: 0cd41a0f8552ad94394122020f0ac366, type: 3}
@@ -4933,10 +4831,21 @@ MonoBehaviour:
   bodyPartDownLeft: {fileID: 2148718390412838394, guid: 71d490224777ab34584a6cd509284698, type: 3}
   bodyPartLeftUp: {fileID: 2835074140090763423, guid: 8755cc8d10cfc4c4494d25a99b77a58b, type: 3}
   rock: {fileID: 5595672371818596212, guid: 28208a9cebad03641b15837a816ab878, type: 3}
+  regularFood: {fileID: 2039903462861491950, guid: d428c9f16cb6dcb4998cd9efc6dbc9e8, type: 3}
+  rockBuffObject: {fileID: 4583836951891059140, guid: 3f8af6841b520ed469e65a0c3f3be061, type: 3}
+  rockDebuffObject: {fileID: 6421791128036878117, guid: fc01b5dcde99fc54c898c7aab5e2c776, type: 3}
+  sizeBuffObject: {fileID: 7858080600803299605, guid: 92f8a45a144529f40bf24b3e8ee239c9, type: 3}
+  sizeDebuffObject: {fileID: 6837919575687171406, guid: ef26a4374faa39a4abd5ed02690390bf, type: 3}
+  speedBuffObject: {fileID: 1344382491135488900, guid: 2e6d8d60deaa51f489e10d28200dafec, type: 3}
+  speedDebuffObject: {fileID: 7082799595526055719, guid: fd1f81402b00fd4479360ea89710e65c, type: 3}
+  bodyBuffObject: {fileID: 6362389300735434680, guid: 37f50964e88cea845ae6c1594b9d0eef, type: 3}
+  wallDebuffObject: {fileID: 6116040876777727134, guid: cd35c030f73c2d64fb4e28845fde7be7, type: 3}
   movingUp: 1
   movingRight: 0
   movingDown: 0
   movingLeft: 0
+  spawnInterval: 10
+  chanceToSpawnRegularFood: 20
   wallExpansion:
     m_PersistentCalls:
       m_Calls:
@@ -5003,7 +4912,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974382188
 GameObject:
@@ -6693,106 +6602,6 @@ Transform:
   - {fileID: 81475608}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1334178632
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1334178636}
-  - component: {fileID: 1334178635}
-  - component: {fileID: 1334178634}
-  - component: {fileID: 1334178633}
-  m_Layer: 0
-  m_Name: SecretSpawnerBuff
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1334178633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334178632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d23691f80a9cff48aeeca1b102b735c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snakeHead: {fileID: 1355558444}
-  gridSize: 0.5
-  XOffset: -0.25
-  YOffset: -0.25
-  minimunXRange: -4
-  maximumXRange: 3
-  minimunYRange: -8
-  maximumYRange: 9
---- !u!61 &1334178634
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334178632}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
-  m_EdgeRadius: 0
---- !u!50 &1334178635
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334178632}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 1
-  m_Constraints: 7
---- !u!4 &1334178636
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334178632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -0.25, z: -0.8954399}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1355558444
 GameObject:
@@ -8738,7 +8547,7 @@ GameObject:
   - component: {fileID: 1653277552}
   - component: {fileID: 1653277551}
   m_Layer: 0
-  m_Name: SecretSpawnerFood
+  m_Name: SecretSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

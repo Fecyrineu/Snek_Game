@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3652563283469337707}
   - component: {fileID: 5264782138663696106}
   - component: {fileID: 3907105374255592266}
+  - component: {fileID: -5456783560791338217}
   m_Layer: 0
   m_Name: BodyBuff
   m_TagString: BodyBuff
@@ -99,3 +100,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-5456783560791338217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362389300735434680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd5405ecb770cd4688024120f60ca72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodDurationInCycles: 50

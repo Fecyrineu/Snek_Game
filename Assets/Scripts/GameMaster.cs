@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
+    //code that prevents wall expansion debuff from spawining at the edges is hardcoded. Fix later, maybe.
+
     public float cycleDuration;
     public float cycleSpeed;
     private float time;
@@ -30,9 +32,8 @@ public class GameMaster : MonoBehaviour
 
 
     public GameObject snakeHead;
-    public GameObject randomSpawnFood;
-    public GameObject randomSpawnBuff;
-    public GameObject randomSpawnDebuff;
+    public GameObject randomSpawn;
+    private RandySpawner rs;
     public GameObject pointsUI;
     private Text _pointsUI;
 
@@ -45,6 +46,16 @@ public class GameMaster : MonoBehaviour
 
     public GameObject rock;
 
+    public GameObject regularFood;
+    public GameObject rockBuffObject;
+    public GameObject rockDebuffObject;
+    public GameObject sizeBuffObject;
+    public GameObject sizeDebuffObject;
+    public GameObject speedBuffObject;
+    public GameObject speedDebuffObject;
+    public GameObject bodyBuffObject;
+    public GameObject wallDebuffObject;
+
     public bool movingUp = true;
     public bool movingRight = false;
     public bool movingDown = false;
@@ -54,6 +65,13 @@ public class GameMaster : MonoBehaviour
     private bool hasMovedLeft = false;
 
     private GameObject[] allBodyParts;
+    private GameObject aRock;
+
+    [SerializeField] private int spawnInterval;
+    private int cyclesSinceSpawn;
+    [SerializeField]private int chanceToSpawnRegularFood;
+    private int randy;
+    private int numberOfRocks;
 
     public UnityEvent wallExpansion;
     public UnityEvent onGameEnd;
@@ -61,6 +79,8 @@ public class GameMaster : MonoBehaviour
     void Start()
     {
         _pointsUI = pointsUI.GetComponent<Text>();
+        cyclesSinceSpawn = spawnInterval;
+        rs = randomSpawn.GetComponent<RandySpawner>();
     }
 
     void Update()
@@ -73,12 +93,78 @@ public class GameMaster : MonoBehaviour
             hasMovedThisCycle = false;
             hasMovedRight = false;
             hasMovedLeft = false;
+
             if(bodyBuffActive == true)
             {
                 bodyBuffActiveFor++;
                 if(bodyBuffActiveFor >= bodyBuffDuration)
                 {
                     bodyBuffActive = false;
+                }
+            }
+
+            cyclesSinceSpawn++;
+            if(cyclesSinceSpawn >= spawnInterval)
+            {
+                cyclesSinceSpawn = 0;
+                randy = Random.Range(1, chanceToSpawnRegularFood + 9);
+                switch (randy)
+                {
+                    case 1:
+                        if(numberOfRocks > 0)
+                        {
+                            Instantiate(rockBuffObject, randomSpawn.transform.position, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(regularFood, randomSpawn.transform.position, Quaternion.identity);
+                        }
+                        break;
+                    case 2:
+                        Instantiate(rockDebuffObject, randomSpawn.transform.position, Quaternion.identity);
+                        break;
+                    case 3:
+                        if(snakeSize > sizeDecreaseUponBuff)
+                        {
+                            Instantiate(sizeBuffObject, randomSpawn.transform.position, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(regularFood, randomSpawn.transform.position, Quaternion.identity);
+                        }
+                        break;
+                    case 4:
+                        Instantiate(sizeDebuffObject, randomSpawn.transform.position, Quaternion.identity);
+                        break;
+                    case 5:
+                        if(cycleSpeed >= cycleDuration + speedDecreaseUponBuff)
+                        {
+                            Instantiate(speedBuffObject, randomSpawn.transform.position, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(regularFood, randomSpawn.transform.position, Quaternion.identity);
+                        }
+                        break;
+                    case 6:
+                        Instantiate(speedDebuffObject, randomSpawn.transform.position, Quaternion.identity);
+                        break;
+                    case 7:
+                        if(randomSpawn.transform.position.x > rs.minimunXRange * rs.gridSize + rs.XOffset && randomSpawn.transform.position.x < rs.maximumXRange * rs.gridSize + rs.XOffset && randomSpawn.transform.position.y > rs.minimunYRange * rs.gridSize + rs.YOffset && randomSpawn.transform.position.y < rs.maximumYRange * rs.gridSize + rs.YOffset)
+                        {
+                            Instantiate(wallDebuffObject, randomSpawn.transform.position, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(regularFood, randomSpawn.transform.position, Quaternion.identity);
+                        }
+                        break;
+                    case 8:
+                        Instantiate(bodyBuffObject, randomSpawn.transform.position, Quaternion.identity);
+                        break;
+                    default:
+                        Instantiate(regularFood, randomSpawn.transform.position, Quaternion.identity);
+                        break;
                 }
             }
         }
@@ -165,7 +251,7 @@ public class GameMaster : MonoBehaviour
     {
         points = points + pointsForBuff;
         snakeSize = snakeSize + sizeIncreaseUponEating;
-        cycleSpeed = cycleSpeed + speedDecreaseUponBuff;
+        cycleSpeed = cycleSpeed - speedDecreaseUponBuff;
     }
     public void speedDebuff()
     {
@@ -177,7 +263,7 @@ public class GameMaster : MonoBehaviour
     {
         points = points + pointsForBuff;
         cycleSpeed = cycleSpeed + speedIncreaseUponEating;
-        snakeSize = snakeSize + sizeDecreaseUponBuff;
+        snakeSize = snakeSize - sizeDecreaseUponBuff;
     }
     public void sizeDebuff()
     {
@@ -212,6 +298,19 @@ public class GameMaster : MonoBehaviour
         cycleSpeed = cycleSpeed + speedIncreaseUponEating;
         snakeSize = snakeSize + sizeIncreaseUponEating;
 
-        Instantiate(rock, randomSpawnDebuff.transform.position, Quaternion.identity);
+        numberOfRocks++;
+
+        Instantiate(rock, randomSpawn.transform.position, Quaternion.identity);
+    }
+    public void rockBuff()
+    {
+        points = points + pointsForBuff;
+        cycleSpeed = cycleSpeed + speedIncreaseUponEating;
+        snakeSize = snakeSize + sizeIncreaseUponEating;
+
+        numberOfRocks--;
+
+        aRock = GameObject.FindWithTag("Rock");
+        Destroy(aRock);
     }
 }
