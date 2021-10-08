@@ -37,7 +37,7 @@ TextureImporter:
     second: snake_10
   - first:
       213: -7071220979795649887
-    second: snake_11
+    second: Obstacle
   - first:
       213: 8246457370690664698
     second: snake_12
@@ -58,7 +58,7 @@ TextureImporter:
     second: snake_17
   - first:
       213: 7726647414754227126
-    second: snake_18
+    second: Buf
   - first:
       213: 8871014570830029652
     second: snake_19
@@ -136,10 +136,10 @@ TextureImporter:
     second: snake_body
   - first:
       213: 8902732171070767228
-    second: snake_44
+    second: Frutinha
   - first:
       213: -434137254657092953
-    second: snake_45
+    second: Debuf
   - first:
       213: 5630778892877937399
     second: snake_46
@@ -338,7 +338,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -350,7 +350,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -362,7 +362,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -374,7 +374,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -619,7 +619,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: snake_11
+      name: Obstacle
       rect:
         serializedVersion: 2
         x: 88
@@ -766,7 +766,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: snake_18
+      name: Buf
       rect:
         serializedVersion: 2
         x: 40
@@ -1312,7 +1312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: snake_44
+      name: Frutinha
       rect:
         serializedVersion: 2
         x: 40
@@ -1333,7 +1333,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: snake_45
+      name: Debuf
       rect:
         serializedVersion: 2
         x: 48
