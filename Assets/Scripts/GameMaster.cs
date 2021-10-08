@@ -227,10 +227,10 @@ public class GameMaster : MonoBehaviour
                 }
             }
         }
-        if(movingUp == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(0, gridSize, 0);}
-        if(movingRight == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(gridSize, 0, 0);}
-        if(movingDown == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(0, -gridSize, 0);}
-        if(movingLeft == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(-gridSize, 0, 0);}
+        if(movingUp == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(0, gridSize, 0); snakeHead.transform.rotation = Quaternion.Euler(0, 0, 0);}
+        if(movingRight == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(gridSize, 0, 0); snakeHead.transform.rotation = Quaternion.Euler(0, 0, 270);}
+        if(movingDown == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(0, -gridSize, 0); snakeHead.transform.rotation = Quaternion.Euler(0, 0, 180);}
+        if(movingLeft == true){snakeHead.transform.position = snakeHead.transform.position + new Vector3(-gridSize, 0, 0); snakeHead.transform.rotation = Quaternion.Euler(0, 0, 90);}
     }
     public void endGame()
     {
