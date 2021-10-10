@@ -60,5 +60,10 @@ public class Head : MonoBehaviour
             gm.rockDebuff();
             Destroy(other.gameObject);
         }
+        if(other.gameObject.tag == "RockBuff")
+        {
+            gm.rockBuff();
+            Destroy(other.gameObject);
+        }
     }
 }

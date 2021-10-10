@@ -7,7 +7,7 @@ public class BodyPart : MonoBehaviour
     private GameMaster gm;
     private SpriteRenderer sr;
     private float time;
-    private float cycleSpeed;
+    public float cycleSpeed;
     private float cycleDuration;
     private int snakeSize;
 
@@ -21,6 +21,7 @@ public class BodyPart : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
         cycleSpeed = gm.cycleSpeed;
         cycleDuration = gm.cycleDuration;
         snakeSize = gm.snakeSize;
@@ -37,11 +38,16 @@ public class BodyPart : MonoBehaviour
         if(time >= cycleDuration * snakeSize)
         {
             Destroy(gameObject);
+            gm.callTail = true;
         }
-        if(time >= cycleDuration * snakeSize - cycleDuration && isTail == false)
-        {
-            isTail = true;
-            //to do: put on tail sprite
-        }
+    }
+
+    public void becomeTail()
+    {
+        sr.sprite = Resources.Load<Sprite>("SnakeTale");
+            if(movingUp == true){gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);}
+            if(movingRight == true){gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);}
+            if(movingDown == true){gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);}
+            if(movingLeft == true){gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);}
     }
 }
