@@ -260,6 +260,7 @@ public class GameMaster : MonoBehaviour
         snakeSize = snakeSize + sizeIncreaseUponEating;
         cycleSpeed = cycleSpeed + speedIncreaseUponEating;
         onEatingRegular.Invoke();
+        _pointsUI.text = "Points: " + points;
     }
     public void speedBuff()
     {
@@ -267,6 +268,7 @@ public class GameMaster : MonoBehaviour
         snakeSize = snakeSize + sizeIncreaseUponEating;
         cycleSpeed = cycleSpeed - speedDecreaseUponBuff;
         onEatingBuff.Invoke();
+        _pointsUI.text = "Points: " + points;
     }
     public void speedDebuff()
     {
@@ -274,6 +276,7 @@ public class GameMaster : MonoBehaviour
         snakeSize = snakeSize + sizeIncreaseUponEating;
         cycleSpeed = cycleSpeed + speedIncreaseUponDebuff;
         onEatingDebuff.Invoke();
+        _pointsUI.text = "Points: " + points;
     }
     public void sizedBuff()
     {
@@ -281,6 +284,7 @@ public class GameMaster : MonoBehaviour
         cycleSpeed = cycleSpeed + speedIncreaseUponEating;
         snakeSize = snakeSize - sizeDecreaseUponBuff;
         onEatingBuff.Invoke();
+        _pointsUI.text = "Points: " + points;
     }
     public void sizeDebuff()
     {
@@ -288,6 +292,7 @@ public class GameMaster : MonoBehaviour
         cycleSpeed = cycleSpeed + speedIncreaseUponEating;
         snakeSize = snakeSize + sizeIncreaseUponDebuff;
         onEatingDebuff.Invoke();
+        _pointsUI.text = "Points: " + points;
     }
     public void wallsDebuff()
     {
@@ -295,6 +300,8 @@ public class GameMaster : MonoBehaviour
         cycleSpeed = cycleSpeed + speedIncreaseUponEating;
         snakeSize = snakeSize + sizeIncreaseUponEating;
         onEatingDebuff.Invoke();
+        _pointsUI.text = "Points: " + points;
+
         wallExpansion.Invoke();
     }
     public void bodyBuff()
@@ -303,6 +310,7 @@ public class GameMaster : MonoBehaviour
         snakeSize = snakeSize + sizeIncreaseUponEating;
         cycleSpeed = cycleSpeed + speedIncreaseUponEating;
         onEatingBuff.Invoke();
+        _pointsUI.text = "Points: " + points;
 
         allBodyParts = GameObject.FindGameObjectsWithTag("BodyPart");
         foreach(GameObject bodyPart in allBodyParts)
@@ -318,6 +326,7 @@ public class GameMaster : MonoBehaviour
         cycleSpeed = cycleSpeed + speedIncreaseUponEating;
         snakeSize = snakeSize + sizeIncreaseUponEating;
         onEatingDebuff.Invoke();
+        _pointsUI.text = "Points: " + points;
 
         numberOfRocks++;
 
@@ -329,6 +338,7 @@ public class GameMaster : MonoBehaviour
         cycleSpeed = cycleSpeed + speedIncreaseUponEating;
         snakeSize = snakeSize + sizeIncreaseUponEating;
         onEatingBuff.Invoke();
+        _pointsUI.text = "Points: " + points;
 
         numberOfRocks--;
 
