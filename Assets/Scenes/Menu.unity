@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Felipe Molina Cyrineu RA - 21249424
+  m_Text: Felipe Molina Cyrineu - Programmer
 --- !u!222 &44086490
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5902,8 +5902,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -191.64}
-  m_SizeDelta: {x: 558.34, y: 141.97}
+  m_AnchoredPosition: {x: 0, y: -216.98}
+  m_SizeDelta: {x: 558.34, y: 192.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981521589
 MonoBehaviour:
@@ -5938,7 +5938,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Diego Machado Baccili RA - 21375346
+  m_Text: Diego Machado Baccili - Game and level designer
 --- !u!222 &1981521590
 CanvasRenderer:
   m_ObjectHideFlags: 0
